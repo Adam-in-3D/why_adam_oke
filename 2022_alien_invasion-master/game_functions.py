@@ -31,9 +31,9 @@ def keydown_event(event, settings, screen, ship, bullets):
     if event.key == pygame.K_e:
         ship.rotate_clockwise = True
     if event.key == pygame.K_SPACE or event.key == pygame.K_z:
-        if len(bullets) <= settings.bullet_limit:
-            new_bullet = Bullets(settings, screen, ship)
-            bullets.add(new_bullet)
+        #if len(bullets) <= settings.bullet_limit:
+        new_bullet = Bullets(settings, screen, ship)
+        bullets.add(new_bullet)
 
 
 def keyup_event(event, ship):
@@ -69,7 +69,9 @@ def update_screen(settings, screen, ship, bullets, aliens):
     # draw the ship on the screen
     ship.blitme()
 
-    check_collision(bullets, aliens)
+    Aliens_again(settings, screen, ship, aliens)
+
+    check_collision(settings, bullets, aliens)
 
     # update the display
     pygame.display.flip()
@@ -108,5 +110,18 @@ def create_alien(settings, screen, aliens, alien_number, row_number):
 
     aliens.add(alien)
 
-def check_collision(bullets, aliens):
-    pygame.sprite.groupcollide(bullets, aliens, True, True)
+def Aliens_again(settings, screen, ship, aliens):
+    print(len(aliens))
+    if len(aliens) == 0:
+        create_fleet(settings, screen, ship, aliens)
+
+"""
+def Scores(settings):
+    if check_collision == True:
+        settings.score += 10
+    print(settings.score)
+"""
+
+def check_collision(settings, bullets, aliens):
+    if pygame.sprite.groupcollide(bullets, aliens, True, True):
+        settings.score += 10
