@@ -125,3 +125,4 @@ def Scores(settings):
 def check_collision(settings, bullets, aliens):
     if pygame.sprite.groupcollide(bullets, aliens, True, True):
         settings.score += 10
+    print(settings.score)
