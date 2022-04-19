@@ -30,7 +30,8 @@ class Bullets(Sprite):
         """move the bullet up the screen"""
         self.y -= self.speed
         self.rect.y = self.y
-
+        if self.y <= 0:
+            self.kill()
     def draw_bullet(self):
         """draw bullet to screen"""
         pygame.draw.rect(self.screen, self.color, self.rect)

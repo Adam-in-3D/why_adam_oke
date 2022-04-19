@@ -31,8 +31,9 @@ def keydown_event(event, settings, screen, ship, bullets):
     if event.key == pygame.K_e:
         ship.rotate_clockwise = True
     if event.key == pygame.K_SPACE or event.key == pygame.K_z:
-        new_bullet = Bullets(settings, screen, ship)
-        bullets.add(new_bullet)
+        if len(bullets) <= settings.bullet_limit:
+            new_bullet = Bullets(settings, screen, ship)
+            bullets.add(new_bullet)
 
 
 def keyup_event(event, ship):
