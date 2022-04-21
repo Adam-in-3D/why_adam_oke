@@ -130,5 +130,5 @@ def print_text(settings, screen):
 def Game_end(settings):
     if settings.score >= 2500:
         print("Congratulations you have delayed the destruction of... uhh something (._.)")
-        quit(pygame)
+        sys.exit()
 
