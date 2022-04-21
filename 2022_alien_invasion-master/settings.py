@@ -6,7 +6,7 @@ class Settings():
         """ initialize game's settings"""
 
         # screen settings
-        self.bg_color = (100, 5, 10)
+        self.bg_color = (25, 0, 50)
         self.screen_width = 1200
         self.screen_height = 700
 
@@ -14,7 +14,7 @@ class Settings():
         self.bullet_speed = 1
         self.bullet_width = 3
         self.bullet_height = 15
-        self.bullet_color = (255, 0, 0)
+        self.bullet_color = (0, 255, 0)
         self.bullet_limit = 2
 
         # player settings

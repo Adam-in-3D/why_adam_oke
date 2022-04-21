@@ -31,9 +31,9 @@ def keydown_event(event, settings, screen, ship, bullets):
     if event.key == pygame.K_e:
         ship.rotate_clockwise = True
     if event.key == pygame.K_SPACE or event.key == pygame.K_z:
-        #if len(bullets) <= settings.bullet_limit:
-        new_bullet = Bullets(settings, screen, ship)
-        bullets.add(new_bullet)
+        if len(bullets) <= settings.bullet_limit:
+            new_bullet = Bullets(settings, screen, ship)
+            bullets.add(new_bullet)
 
 
 def keyup_event(event, ship):
@@ -72,6 +72,8 @@ def update_screen(settings, screen, ship, bullets, aliens):
     Aliens_again(settings, screen, ship, aliens)
 
     check_collision(settings, bullets, aliens)
+
+    print_text(settings, screen)
 
     # update the display
     pygame.display.flip()
@@ -115,14 +117,18 @@ def Aliens_again(settings, screen, ship, aliens):
     if len(aliens) == 0:
         create_fleet(settings, screen, ship, aliens)
 
-"""
-def Scores(settings):
-    if check_collision == True:
-        settings.score += 10
-    print(settings.score)
-"""
-
 def check_collision(settings, bullets, aliens):
     if pygame.sprite.groupcollide(bullets, aliens, True, True):
         settings.score += 10
     print(settings.score)
+
+def print_text(settings, screen):
+    font = pygame.font.SysFont("Times New Roman", 20, True, False)
+    surface = font.render("Your score be " + str(settings.score), True, (0, 255, 0))
+    screen.blit(surface, (50, 660))
+
+def Game_end(settings):
+    if settings.score >= 2500:
+        print("Congratulations you have delayed the destruction of... uhh something (._.)")
+        quit(pygame)
+
