@@ -27,7 +27,7 @@ class Alien(Sprite):
         self.available_space_x = self.settings.screen_width -(2 * self.rect.width)
         self.number_of_aliens = int(self.available_space_x / (2* self.rect.width))
 
-        self.speed = 1
+        self.speed = 3
         self.direction = .5
 
     def blitme(self):
