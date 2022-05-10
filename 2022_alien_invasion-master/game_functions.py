@@ -81,6 +81,7 @@ def update_screen(settings, screen, ship, bullets, aliens, play_button):
         # draw the ship on the screen
         ship.blitme()
 
+        Alien_off(aliens, settings)
         check_collision(settings, bullets, aliens)
         check_pilot(settings, ship, aliens, screen)
 
@@ -178,3 +179,8 @@ def Game_end(settings):
         print("Look you died :)")
         print("Your score was " + str(settings.score))
         sys.exit()
+
+def Alien_off(aliens, settings):
+    for alien in aliens:
+        if alien.rect.top >= settings.screen_height:
+            aliens.empty()

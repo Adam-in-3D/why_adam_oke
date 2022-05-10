@@ -6,7 +6,7 @@ class Button():
         self.screen_rect = screen.get_rect()
 
         # self.width, self.height = 200, 50
-        self.width = 300
+        self.width = 600
         self.height = 50
 
         self.button_color = (40, 60 ,100)
